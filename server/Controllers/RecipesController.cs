@@ -16,4 +16,36 @@ public class RecipesController : ControllerBase
         _recipesService = recipesService;
         _auth0Provider = auth0Provider;
     }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<ActionResult<Recipe>> CreateRecipe([FromBody] Recipe recipeData)
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            recipeData.CreatorId = userInfo.Id;
+            Recipe recipe = _recipesService.CreateRecipe(recipeData);
+            return Ok(recipe);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet]
+    public ActionResult<List<Recipe>> GetRecipes()
+    {
+        try
+        {
+            List<Recipe> recipes = _recipesService.GetRecipes();
+            return Ok(recipes);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
 }
