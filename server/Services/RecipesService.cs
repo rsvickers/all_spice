@@ -1,6 +1,7 @@
 
 
 
+
 namespace all_spice.Services;
 
 public class RecipesService
@@ -23,5 +24,28 @@ public class RecipesService
     {
         List<Recipe> recipes = _recipesRepository.GetRecipes();
         return recipes;
+    }
+    internal Recipe GetRecipeById(int recipeId)
+    {
+        Recipe recipe = _recipesRepository.GetRecipeById(recipeId);
+
+        if (recipe == null)
+        {
+            throw new Exception($"{recipeId} is not a valid Id");
+        }
+        return recipe;
+    }
+
+    internal Recipe UpdateRecipe(int recipeId, Recipe recipeData)
+    {
+        Recipe originalRecipe = GetRecipeById(recipeId);
+
+        originalRecipe.Title = recipeData.Title ?? originalRecipe.Title;
+        originalRecipe.Instructions = recipeData.Instructions ?? originalRecipe.Instructions;
+        originalRecipe.Img = recipeData.Img ?? originalRecipe.Img;
+        originalRecipe.Category = recipeData.Category ?? originalRecipe.Category;
+
+        _recipesRepository.UpdateRecipe(originalRecipe);
+        return originalRecipe;
     }
 }
