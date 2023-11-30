@@ -36,9 +36,13 @@ public class RecipesService
         return recipe;
     }
 
-    internal Recipe UpdateRecipe(int recipeId, Recipe recipeData)
+    internal Recipe UpdateRecipe(int recipeId, Recipe recipeData, string userId)
     {
         Recipe originalRecipe = GetRecipeById(recipeId);
+        if (originalRecipe.CreatorId != userId)
+        {
+            throw new Exception("ahhh");
+        }
 
         originalRecipe.Title = recipeData.Title ?? originalRecipe.Title;
         originalRecipe.Instructions = recipeData.Instructions ?? originalRecipe.Instructions;
@@ -47,5 +51,16 @@ public class RecipesService
 
         _recipesRepository.UpdateRecipe(originalRecipe);
         return originalRecipe;
+    }
+
+    internal string DestroyRecipe(int recipeId, string userId)
+    {
+        Recipe recipe = GetRecipeById(recipeId);
+        if (recipe.CreatorId != userId)
+        {
+            throw new Exception("Not your recipe");
+        }
+        _recipesRepository.DestroyRecipe(recipeId);
+        return "Recipe has been deleted.";
     }
 }

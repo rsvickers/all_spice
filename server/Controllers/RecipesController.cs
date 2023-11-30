@@ -37,15 +37,32 @@ public class RecipesController : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("{recipeId}")]
+    [HttpPut("{recipeId}")]
     public async Task<ActionResult<Recipe>> UpdateRecipe(int recipeId, [FromBody] Recipe recipeData)
     {
         try
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-            recipeData.CreatorId = userInfo.Id;
-            Recipe recipe = _recipesService.UpdateRecipe(recipeId, recipeData);
+            string userId = userInfo.Id;
+            Recipe recipe = _recipesService.UpdateRecipe(recipeId, recipeData, userId);
             return Ok(recipe);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [Authorize]
+    [HttpDelete("{recipeId}")]
+    public async Task<ActionResult<string>> DestroyRecipe(int recipeId)
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            string userId = userInfo.Id;
+            string message = _recipesService.DestroyRecipe(recipeId, userId);
+            return Ok(message);
         }
         catch (Exception e)
         {
@@ -81,5 +98,7 @@ public class RecipesController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+
+
 
 }

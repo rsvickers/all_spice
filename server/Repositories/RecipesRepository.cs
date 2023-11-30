@@ -3,6 +3,7 @@
 
 
 
+
 namespace all_spice.Repositories;
 
 public class RecipesRepository
@@ -27,9 +28,9 @@ public class RecipesRepository
         JOIN accounts acc ON rec.creatorId = acc.id
         WHERE rec.id = LAST_INSERT_ID();";
 
-        Recipe recipe = _db.Query<Recipe, Account, Recipe>(sql, (recipe, account) =>
+        Recipe recipe = _db.Query<Recipe, Profile, Recipe>(sql, (recipe, profile) =>
         {
-            recipe.Creator = account;
+            recipe.Creator = profile;
             return recipe;
         }, recipeData).FirstOrDefault();
 
@@ -46,9 +47,9 @@ public class RecipesRepository
         FROM recipes rec
         JOIN accounts acc ON rec.creatorId = acc.id;";
 
-        List<Recipe> recipes = _db.Query<Recipe, Account, Recipe>(sql, (recipe, account) =>
+        List<Recipe> recipes = _db.Query<Recipe, Profile, Recipe>(sql, (recipe, profile) =>
         {
-            recipe.Creator = account;
+            recipe.Creator = profile;
             return recipe;
         }).ToList();
         return recipes;
@@ -64,24 +65,43 @@ public class RecipesRepository
         JOIN accounts acc ON rec.creatorId = acc.id
         WHERE rec.id = @recipeId;";
 
-        Recipe recipe = _db.Query<Recipe, Account, Recipe>(sql, (recipe, account) =>
+        Recipe recipe = _db.Query<Recipe, Profile, Recipe>(sql, (recipe, profile) =>
         {
-            recipe.Creator = account;
+            recipe.Creator = profile;
             return recipe;
         }, new { recipeId }).FirstOrDefault();
         return recipe;
 
     }
 
-    internal void UpdateRecipe(Recipe originalRecipe)
+    internal Recipe UpdateRecipe(Recipe originalRecipe)
     {
         string sql = @"
         UPDATE recipes
         SET
-        title = @Title,
-        instructions = @Instructions,
-        img = @Img,
-        category = @Category
+        instructions = @Instructions
+        WHERE id = @Id;
+        
+        SELECT 
+        rec.*,
+        acc.*
+        FROM recipes rec
+        JOIN accounts acc ON acc.id = rec.creatorId
+        WHERE rec.id = @Id
         ;";
+
+
+        Recipe newRecipe = _db.Query<Recipe, Profile, Recipe>(sql, (recipe, profile) =>
+        {
+            recipe.Creator = profile;
+            return recipe;
+        }, originalRecipe).FirstOrDefault();
+        return newRecipe;
+    }
+
+    internal void DestroyRecipe(int recipeId)
+    {
+        string sql = "DELETE FROM recipes WHERE id = @recipeId LIMIT 1;";
+        _db.Execute(sql, new { recipeId });
     }
 }
