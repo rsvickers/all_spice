@@ -91,7 +91,7 @@ a:hover {
   background-size: cover;
   /* background-position: center; */
   min-height: 15rem;
-  box-shadow: 1px 1px 15px black;
+  box-shadow: 1px 1px 15px;
 }
 
 .funFont {

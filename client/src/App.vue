@@ -5,8 +5,7 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    Made by Rhys the 🧙‍♂️
+  <footer>
   </footer>
 </template>
 

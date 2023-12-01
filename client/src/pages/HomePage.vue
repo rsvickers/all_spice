@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <section class="row position-relative">
       <div class="col-12 p-4">
-        <div class="p-3 d-md-flex buttonBg justify-content-center align-items-end w-50 absolute">
+        <div class="p-3 d-md-flex buttonBg justify-content-center rounded align-items-end w-50 absolute">
           <button class="btn btn text-success mx-2">Home</button>
           <button class="btn btn text-success mx-2">My Recipes</button>
           <button class="btn btn text-success mx-2">Favorites</button>
@@ -10,8 +10,10 @@
       </div>
     </section>
 
-    <section v-for="recipe in recipes" :key="recipe.id" class="row">
-      <RecipeCardComponent :recipeProp="recipe" />
+    <section class="row photos mt-4">
+      <div class="col-4" v-for="recipe in recipes" :key="recipe.id">
+        <RecipeCardComponent :recipeProp="recipe" />
+      </div>
     </section>
   </div>
 </template>
@@ -76,5 +78,11 @@ export default {
   position: absolute;
   left: 26%;
   top: 300%;
+}
+
+.photos {
+  position: absolute;
+  left: 6%;
+  top: 33%;
 }
 </style>

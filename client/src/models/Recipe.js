@@ -4,6 +4,7 @@ export class Recipe {
         this.createdAt = new Date(data.createdAt)
         this.updatedAt = new Date(data.updatedAt)
         this.title = data.title
+        this.img = data.img
         this.instructions = data.instructions
         this.category = data.category
         this.creatorId = data.creatorId
