@@ -2,21 +2,28 @@
   <div class="container-fluid">
     <section class="row position-relative">
       <div class="col-12 p-4">
-        <div class="p-3 d-none d-md-flex buttonBg justify-content-center align-items-end w-50 absolute">
+        <div class="p-3 d-none d-md-flex buttonBg justify-content-center rounded align-items-end w-50 absolute">
           <button class="btn btn text-success mx-2">Home</button>
           <button class="btn btn text-success mx-2">My Recipes</button>
           <button class="btn btn text-success mx-2">Favorites</button>
         </div>
       </div>
     </section>
+
+    <section class="row">
+
+    </section>
   </div>
 </template>
 
 <script>
+import { AppState } from '../AppState';
+
 export default {
   setup() {
     return {
-
+      account: computed(() => AppState.account),
+      recipe: computed(() => AppState.recipe)
     }
   }
 }
