@@ -1,6 +1,6 @@
 <template>
   <Login />
-  <nav>
+  <nav class="mb-5">
     <div class="coolBg">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center btn text-success lighten-30 selectable text-uppercase">
@@ -32,6 +32,16 @@
             <h1>All-Spice</h1>
             <h4>Cherish Your Family</h4>
             <h5>And Their Cooking</h5>
+          </div>
+        </section>
+
+        <section class="row position-relative">
+          <div class="col-12 p-4">
+            <div class="p-3 d-md-flex buttonBg justify-content-center rounded align-items-end w-50 absolute">
+              <button class="btn btn text-success mx-2">Home</button>
+              <button class="btn btn text-success mx-2">My Recipes</button>
+              <button class="btn btn text-success mx-2">Favorites</button>
+            </div>
           </div>
         </section>
       </div>
@@ -98,5 +108,17 @@ a:hover {
   font-family: 'Hedvig Letters Serif', serif;
   color: white;
   text-shadow: 2px 2px black;
+}
+
+
+.buttonBg {
+  background-color: white;
+  box-shadow: 1px 1px 10px black;
+}
+
+.absolute {
+  position: absolute;
+  left: 26%;
+  top: 85%;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <section class="row position-relative">
+    <!-- <section class="row position-relative">
       <div class="col-12 p-4">
         <div class="p-3 d-md-flex buttonBg justify-content-center rounded align-items-end w-50 absolute">
           <button class="btn btn text-success mx-2">Home</button>
@@ -8,7 +8,7 @@
           <button class="btn btn text-success mx-2">Favorites</button>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="row photos mt-4">
       <div class="col-4" v-for="recipe in recipes" :key="recipe.id">

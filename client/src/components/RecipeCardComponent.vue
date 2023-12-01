@@ -1,8 +1,13 @@
 <template>
-    <div class="backgroundImg mb-5 rounded text-light" :style="{ backgroundImage: `url(${recipeProp.img})` }">
-        <div class="d-flex justify-content-between p-1">
+    <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between"
+        :style="{ backgroundImage: `url(${recipeProp.img})` }">
+        <div class="d-flex justify-content-between p-2">
             <p class="p-3 box rounded">{{ recipeProp.category }}</p>
             <i class="mdi mdi-heart-multiple-outline fs-4 p-3 box rounded"></i>
+        </div>
+        <div class="box rounded p-2">
+            <p><b>{{ recipeProp.title }}</b></p>
+            <p>{{ recipeProp.instructions }}</p>
         </div>
 
     </div>
@@ -30,8 +35,8 @@ export default {
 .backgroundImg {
     height: 23rem;
     width: 23rem;
-    object-fit: cover;
-    object-position: center;
+    background-position: center;
+    background-size: cover;
     box-shadow: 1px 1px 15px;
 }
 
