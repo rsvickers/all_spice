@@ -2,8 +2,8 @@
     <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between"
         :style="{ backgroundImage: `url(${recipeProp.img})` }">
         <div class="d-flex justify-content-between p-2">
-            <p class="p-3 box rounded">{{ recipeProp.category }}</p>
-            <i class="mdi mdi-heart-multiple-outline fs-4 p-3 box rounded"></i>
+            <p class="p-3 box rounded-pill">{{ recipeProp.category }}</p>
+            <i class="mdi mdi-heart fs-4 p-3 text-danger box rounded-pill"></i>
         </div>
         <div class="box rounded p-2">
             <p><b>{{ recipeProp.title }}</b></p>
@@ -43,6 +43,6 @@ export default {
 .box {
     // border: solid rgb(255, 255, 255);
     box-shadow: 1px 1px rgba(215, 215, 215, 0.759);
-    background-color: rgba(0, 0, 0, 0.581);
+    background-color: rgba(0, 0, 0, 0.423);
 }
 </style>

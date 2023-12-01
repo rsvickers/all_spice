@@ -19,6 +19,12 @@
                 Manage Account
               </div>
             </router-link>
+            <div>
+              <button type="button" class="btn btn-outline-dark w-100" data-bs-toggle="modal"
+                data-bs-target="#createRecipeModal">
+                Create Event
+              </button>
+            </div>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout
