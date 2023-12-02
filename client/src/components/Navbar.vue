@@ -118,7 +118,7 @@ a:hover {
 
 .absolute {
   position: absolute;
-  left: 26%;
+  left: 24.5%;
   top: 85%;
 }
 </style>

@@ -20,9 +20,9 @@
               </div>
             </router-link>
             <div>
-              <button type="button" class="btn btn-outline-dark w-100" data-bs-toggle="modal"
+              <button type="button" class="btn btn-outline-success  w-100" data-bs-toggle="modal"
                 data-bs-target="#createRecipeModal">
-                Create Event
+                Create Recipe
               </button>
             </div>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">

@@ -41,7 +41,7 @@ public class RecipesService
         Recipe originalRecipe = GetRecipeById(recipeId);
         if (originalRecipe.CreatorId != userId)
         {
-            throw new Exception("ahhh");
+            throw new Exception("NOT YOUR RECIPE TO UPDATE");
         }
 
         originalRecipe.Title = recipeData.Title ?? originalRecipe.Title;

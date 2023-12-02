@@ -1,5 +1,5 @@
 <template>
-    <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between"
+    <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between" role="button"
         :style="{ backgroundImage: `url(${recipeProp.img})` }">
         <div class="d-flex justify-content-between p-2">
             <p class="p-3 box rounded-pill">{{ recipeProp.category }}</p>
@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .backgroundImg {
-    height: 23rem;
+    height: 14rem;
     width: 23rem;
     background-position: center;
     background-size: cover;
@@ -43,6 +43,6 @@ export default {
 .box {
     // border: solid rgb(255, 255, 255);
     box-shadow: 1px 1px rgba(215, 215, 215, 0.759);
-    background-color: rgba(0, 0, 0, 0.423);
+    background-color: rgba(38, 38, 38, 0.421);
 }
 </style>
