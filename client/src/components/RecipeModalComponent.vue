@@ -5,8 +5,6 @@
             <div class="modal-content">
                 <div class="modal-header coolBg text-white">
                     <h5 class="modal-title funFont" id="createRecipeModal">Create Recipe</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form @submit.prevent="createRecipe()">
@@ -35,7 +33,7 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success">Create</button>
                         </div>
                     </form>
