@@ -82,7 +82,7 @@ export default {
 
 .photos {
   position: absolute;
-  left: 6%;
-  top: 45%;
+  left: 2.7%;
+  top: 55%;
 }
 </style>

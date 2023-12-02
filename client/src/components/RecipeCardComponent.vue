@@ -7,7 +7,7 @@
         </div>
         <div class="box rounded p-2">
             <p><b>{{ recipeProp.title }}</b></p>
-            <!-- <p>{{ recipeProp.instructions }}</p> -->
+
         </div>
 
     </div>
@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .backgroundImg {
-    height: 14rem;
+    height: 23rem;
     width: 23rem;
     background-position: center;
     background-size: cover;
