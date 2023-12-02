@@ -83,6 +83,6 @@ export default {
 .photos {
   position: absolute;
   left: 6%;
-  top: 33%;
+  top: 45%;
 }
 </style>

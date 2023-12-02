@@ -7,7 +7,7 @@
         </div>
         <div class="box rounded p-2">
             <p><b>{{ recipeProp.title }}</b></p>
-            <p>{{ recipeProp.instructions }}</p>
+            <!-- <p>{{ recipeProp.instructions }}</p> -->
         </div>
 
     </div>
