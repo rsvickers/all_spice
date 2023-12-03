@@ -1,12 +1,13 @@
 <template>
     <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between" role="button"
-        :style="{ backgroundImage: `url(${recipeProp.img})` }">
+        type="button" data-bs-toggle="modal" data-bs-target="#recipeDetailsModal" @click="setActiveRecipe()"
+        :style="{ backgroundImage: `url(${recipeProp?.img})` }">
         <div class="d-flex justify-content-between p-2">
-            <p class="p-3 box rounded-pill">{{ recipeProp.category }}</p>
+            <p class="p-3 box rounded-pill">{{ recipeProp?.category }}</p>
             <i class="mdi mdi-heart fs-4 p-3 text-danger box rounded-pill"></i>
         </div>
         <div class="box rounded p-2">
-            <p><b>{{ recipeProp.title }}</b></p>
+            <p><b>{{ recipeProp?.title }}</b></p>
 
         </div>
 
@@ -18,13 +19,19 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import { Recipe } from '../models/Recipe';
+import { recipesService } from '../services/RecipesService.js';
+
 export default {
     props: {
-        recipeProp: { type: Recipe, required: true },
+        recipeProp: { type: Recipe || Object, required: true },
     },
     setup() {
         return {
             account: computed(() => AppState.account),
+
+            setActiveRecipe(recipeProp) {
+                recipesService.setActiveRecipe(recipeProp)
+            }
         }
     }
 };
