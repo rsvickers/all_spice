@@ -25,11 +25,11 @@
                                 id="img" />
                         </div>
 
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="instructions" class="form-label">Instructions</label>
                             <textarea v-model="editable.instructions" class="form-control" placeholder="Instructions..."
                                 id="instructions" maxlength="500" rows="3"></textarea>
-                        </div> -->
+                        </div>
 
 
                         <div class="modal-footer">

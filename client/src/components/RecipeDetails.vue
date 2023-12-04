@@ -13,10 +13,28 @@
                             <img class="img-fluid" :src="activeRecipe?.img" alt="">
                         </div>
                         <div class="col-8">
-                            <div class="p-5 d-flex justify-content-evenly">
+                            <div class="p-3 d-flex justify-content-start">
                                 <h2 class="text-success">{{ activeRecipe?.title }}</h2>
                                 <p class="p-2 box text-white rounded-pill"> {{ activeRecipe?.category }}</p>
                             </div>
+
+                            <section class="p-3 row justify-content-between">
+                                <div class="col-5 editBox rounded">
+                                    <h4 class="text-white coolBg  rounded text-center">Instructions</h4>
+                                    <p>{{ activeRecipe?.instructions }}</p>
+                                </div>
+
+                                <div class="col-5 editBox rounded">
+                                    <h4 class="text-white coolBg  rounded text-center">Ingredients</h4>
+                                    <p>helloooo</p>
+                                </div>
+
+                            </section>
+
+                        </div>
+
+                        <div>
+                            <p class="text-end">published by: {{ activeRecipe?.creator.name }}</p>
                         </div>
                     </section>
                 </div>
@@ -56,5 +74,14 @@ export default {
     // border: solid rgb(255, 255, 255);
     box-shadow: 1px 1px rgba(215, 215, 215, 0.759);
     background-color: rgba(38, 38, 38, 0.421);
+}
+
+.editBox {
+    box-shadow: 1px 1px rgba(215, 215, 215, 0.759);
+    background-color: rgba(200, 200, 200, 0.421);
+}
+
+.coolBg {
+    background-color: #527360;
 }
 </style>
