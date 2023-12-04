@@ -8,7 +8,7 @@
 
                 </div>
                 <div class="modal-body modal-lg">
-
+                    <!-- <img class="img-fluid" :src="activeRecipe?.img" alt=""> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
@@ -28,11 +28,17 @@ export default {
 
     setup() {
         return {
-            // recipe: computed(() => AppState.activeRecipe)
+            activeRecipe: computed(() => AppState.activeRecipe)
         }
     }
 };
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.funFont {
+    font-family: 'Hedvig Letters Serif', serif;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+</style>
