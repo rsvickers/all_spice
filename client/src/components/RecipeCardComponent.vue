@@ -1,6 +1,6 @@
 <template>
     <div class="backgroundImg mb-5 rounded text-light d-flex flex-column justify-content-between" role="button"
-        type="button" data-bs-toggle="modal" data-target=".modal-lg" data-bs-target="#recipeDetailsModal"
+        type="button" data-bs-toggle="modal" data-target="modal-xl" data-bs-target="#recipeDetailsModal"
         @click="setActiveRecipe(recipeProp)" :style="{ backgroundImage: `url(${recipeProp?.img})` }">
         <div class="d-flex justify-content-between p-2">
             <p class="p-3 box rounded-pill">{{ recipeProp?.category }}</p>
