@@ -26,15 +26,11 @@
 
                                 <div class="col-5 editBox rounded">
                                     <h4 class="text-white coolBg  rounded text-center">Ingredients</h4>
-                                    <p>helloooo</p>
+                                    <p v-for="ingredient in ingredients" :key="ingredient.id">{{ ingredient.name }}</p>
                                 </div>
 
                             </section>
 
-                        </div>
-
-                        <div>
-                            <p class="text-end">published by: {{ activeRecipe?.creator.name }}</p>
                         </div>
                     </section>
                 </div>
@@ -49,14 +45,18 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, watch } from 'vue';
 import { Recipe } from '../models/Recipe';
 export default {
-
-
     setup() {
+        //     watch(AppState.activeRecipe.id, (() => {
+        //         getIngredientsByRecipeId()
+        //     }))
+
+
         return {
-            activeRecipe: computed(() => AppState.activeRecipe)
+            activeRecipe: computed(() => AppState.activeRecipe),
+            ingredients: computed(() => AppState.activeIngredient),
         }
     }
 };
