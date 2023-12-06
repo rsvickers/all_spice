@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { Favorite } from "../models/Favorite.js"
 import { Ingredient } from "../models/Ingredient.js"
 import { Recipe } from "../models/Recipe.js"
 import { logger } from "../utils/Logger"
@@ -29,6 +30,14 @@ class RecipesService {
         const ingredientData = res.data.map((i) => new Ingredient(i))
         AppState.activeIngredient = ingredientData
     }
+
+    async favoriteTheRecipe(recipeId) {
+        const res = await api.post('api/favorites', { recipeId })
+        logger.log(res.data, 'anything working?')
+        AppState.myFavorite.push(new Favorite(res.data))
+        // this.favoriteTheRecipe()
+    }
+
 }
 
 export const recipesService = new RecipesService()

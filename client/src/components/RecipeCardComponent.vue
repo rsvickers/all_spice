@@ -3,7 +3,12 @@
         type="button" @click="setActiveRecipe(recipeProp)" :style="{ backgroundImage: `url(${recipeProp?.img})` }">
         <div class="d-flex justify-content-between p-2">
             <p class="p-3 box rounded-pill">{{ recipeProp?.category }}</p>
-            <i class="mdi mdi-heart fs-4 p-3 text-danger box rounded-pill"></i>
+
+            <button v-if="!favorite" @click.stop="favoriteTheRecipe()" class="btn"><i
+                    class="mdi mdi-heart-outline fs-4 p-3 text-danger box rounded-pill"></i></button>
+
+            <button v-else class="btn"><i class="mdi mdi-heart-outline fs-4 p-3 text-danger box rounded-pill"></i></button>
+
         </div>
         <div class="box rounded p-2">
             <p><b>{{ recipeProp?.title }}</b></p>
@@ -20,15 +25,19 @@ import { computed, reactive, onMounted } from 'vue';
 import { Recipe } from '../models/Recipe';
 import { recipesService } from '../services/RecipesService.js';
 import { Modal } from 'bootstrap';
+import Pop from '../utils/Pop';
+import { logger } from '../utils/Logger';
 
 export default {
     props: {
         recipeProp: { type: Recipe, required: true },
     },
-    setup() {
+    setup(props) {
         return {
             account: computed(() => AppState.account),
             ingredients: computed(() => AppState.activeIngredient),
+            favorite: computed(() => AppState.myFavorite.find(recipe => recipe.id == props.recipeProp.id)),
+
 
             setActiveRecipe(recipeProp) {
                 recipesService.setActiveRecipe(recipeProp)
@@ -39,7 +48,19 @@ export default {
             setActiveIngredient(recipeProp) {
                 const recipeId = recipeProp.id
                 recipesService.setActiveIngredient(recipeId)
-            }
+            },
+
+            async favoriteTheRecipe() {
+                try {
+                    const recipeId = props.recipeProp.id
+                    await recipesService.favoriteTheRecipe(recipeId)
+
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+
         }
     }
 };
